@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.updateBrandController = void 0;
+var BrandsRepository_1 = require("../../../repositories/implementations/BrandsRepository");
+var UpdateBrandController_1 = require("./UpdateBrandController");
+var UpdateBrandService_1 = require("./UpdateBrandService");
+var brandsRepository = BrandsRepository_1.BrandsRepository.getInstance();
+var updateBrandService = new UpdateBrandService_1.UpdateBrandService(brandsRepository);
+var updateBrandController = new UpdateBrandController_1.UpdateBrandController(updateBrandService);
+exports.updateBrandController = updateBrandController;

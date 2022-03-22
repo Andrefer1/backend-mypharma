@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.deleteCategoryController = void 0;
+var CategoriesRepository_1 = require("../../../repositories/implementations/CategoriesRepository");
+var DeleteCategoryController_1 = require("./DeleteCategoryController");
+var DeleteCategoryService_1 = require("./DeleteCategoryService");
+var categoriesRepository = CategoriesRepository_1.CategoriesRepository.getInstance();
+var deleteCategoryService = new DeleteCategoryService_1.DeleteCategoryService(categoriesRepository);
+var deleteCategoryController = new DeleteCategoryController_1.DeleteCategoryController(deleteCategoryService);
+exports.deleteCategoryController = deleteCategoryController;

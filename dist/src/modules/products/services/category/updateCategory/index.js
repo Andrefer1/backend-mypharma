@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.updateCategoryController = void 0;
+var CategoriesRepository_1 = require("../../../repositories/implementations/CategoriesRepository");
+var UpdateCategoryController_1 = require("./UpdateCategoryController");
+var UpdateCategoryService_1 = require("./UpdateCategoryService");
+var categoriesRepository = CategoriesRepository_1.CategoriesRepository.getInstance();
+var updateCategoryService = new UpdateCategoryService_1.UpdateCategoryService(categoriesRepository);
+var updateCategoryController = new UpdateCategoryController_1.UpdateCategoryController(updateCategoryService);
+exports.updateCategoryController = updateCategoryController;

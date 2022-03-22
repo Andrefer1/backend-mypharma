@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.deleteBrandController = void 0;
+var BrandsRepository_1 = require("../../../repositories/implementations/BrandsRepository");
+var DeleteBrandController_1 = require("./DeleteBrandController");
+var DeleteBrandService_1 = require("./DeleteBrandService");
+var brandsRepository = BrandsRepository_1.BrandsRepository.getInstance();
+var deleteBrandService = new DeleteBrandService_1.DeleteBrandService(brandsRepository);
+var deleteBrandController = new DeleteBrandController_1.DeleteBrandController(deleteBrandService);
+exports.deleteBrandController = deleteBrandController;

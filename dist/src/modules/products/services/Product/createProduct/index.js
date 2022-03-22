@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.createProductController = void 0;
+var ProductsRepository_1 = require("../../../repositories/implementations/ProductsRepository");
+var CreateProductController_1 = require("./CreateProductController");
+var CreateProductService_1 = require("./CreateProductService");
+var productsRepository = ProductsRepository_1.ProductsRepository.getInstance();
+var createProductService = new CreateProductService_1.CreateProductService(productsRepository);
+var createProductController = new CreateProductController_1.CreateProductController(createProductService);
+exports.createProductController = createProductController;

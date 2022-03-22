@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.searchBrandsController = void 0;
+var BrandsRepository_1 = require("../../../repositories/implementations/BrandsRepository");
+var SearchBrandsController_1 = require("./SearchBrandsController");
+var SearchBrandsService_1 = require("./SearchBrandsService");
+var brandsRepository = BrandsRepository_1.BrandsRepository.getInstance();
+var searchBrandsService = new SearchBrandsService_1.SearchBrandsService(brandsRepository);
+var searchBrandsController = new SearchBrandsController_1.SearchBrandsController(searchBrandsService);
+exports.searchBrandsController = searchBrandsController;

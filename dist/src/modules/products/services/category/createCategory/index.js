@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.createCategoryController = void 0;
+var CategoriesRepository_1 = require("../../../repositories/implementations/CategoriesRepository");
+var CreateCategoryController_1 = require("./CreateCategoryController");
+var CreateCategoryService_1 = require("./CreateCategoryService");
+var categoriesRepository = CategoriesRepository_1.CategoriesRepository.getInstance();
+var createCategoryService = new CreateCategoryService_1.CreateCategoryService(categoriesRepository);
+var createCategoryController = new CreateCategoryController_1.CreateCategoryController(createCategoryService);
+exports.createCategoryController = createCategoryController;

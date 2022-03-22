@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.searchCategoriesController = void 0;
+var CategoriesRepository_1 = require("../../../repositories/implementations/CategoriesRepository");
+var SearchCategoriesController_1 = require("./SearchCategoriesController");
+var SearchCategoriesService_1 = require("./SearchCategoriesService");
+var categoriesRepository = CategoriesRepository_1.CategoriesRepository.getInstance();
+var searchCategoriesService = new SearchCategoriesService_1.SearchCategoriesService(categoriesRepository);
+var searchCategoriesController = new SearchCategoriesController_1.SearchCategoriesController(searchCategoriesService);
+exports.searchCategoriesController = searchCategoriesController;

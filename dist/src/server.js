@@ -20,26 +20,25 @@ var app = (0, express_1.default)();
 database_1.default.createConnection();
 // const domainsFromEnv = process.env.CORS_DOMAINS || "";
 // const whiteList = domainsFromEnv.split(",").map((item) => item.trim());
-var whiteList = [
-    "http://localhost:3000",
-    "http://localhost:3000/auth/login",
-    "https://front-end-mypharma.herokuapp.com",
-    "https://front-end-mypharma.herokuapp.com/auth/login",
-];
-var corsOptions = {
-    origin: function (origin, callback) {
-        if (!origin || whiteList.indexOf(origin) !== -1) {
-            callback(null, true);
-        }
-        else {
-            callback(new Error("Not allowed by CORS"));
-        }
-    },
-    credentials: true,
-};
-app.use((0, cors_1.default)(corsOptions));
-// app.use(cors());
+// const whiteList = [
+//     "http://localhost:3000",
+//     "http://localhost:3000/auth/login",
+//     "https://front-end-mypharma.herokuapp.com",
+//     "https://front-end-mypharma.herokuapp.com/auth/login",
+// ];
+// const corsOptions = {
+//     origin: function (origin, callback) {
+//         if (!origin || whiteList.indexOf(origin) !== -1) {
+//             callback(null, true);
+//         } else {
+//             callback(new Error("Not allowed by CORS"));
+//         }
+//     },
+//     credentials: true,
+// };
+// app.use(cors(corsOptions));
 app.use(express_1.default.json());
+app.use((0, cors_1.default)());
 app.use((0, morgan_1.default)("dev"));
 app.use(routes_1.router);
 app.use(function (err, request, response, next) {

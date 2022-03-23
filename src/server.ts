@@ -22,30 +22,28 @@ mongoose.createConnection();
 
 // const whiteList = domainsFromEnv.split(",").map((item) => item.trim());
 
-const whiteList = [
-    "http://localhost:3000",
-    "http://localhost:3000/auth/login",
-    "https://front-end-mypharma.herokuapp.com",
-    "https://front-end-mypharma.herokuapp.com/auth/login",
-];
+// const whiteList = [
+//     "http://localhost:3000",
+//     "http://localhost:3000/auth/login",
+//     "https://front-end-mypharma.herokuapp.com",
+//     "https://front-end-mypharma.herokuapp.com/auth/login",
+// ];
 
-const corsOptions = {
-    origin: function (origin, callback) {
-        if (!origin || whiteList.indexOf(origin) !== -1) {
-            callback(null, true);
-        } else {
-            callback(new Error("Not allowed by CORS"));
-        }
-    },
-    credentials: true,
-};
-app.use(cors(corsOptions));
-
-// app.use(cors());
+// const corsOptions = {
+//     origin: function (origin, callback) {
+//         if (!origin || whiteList.indexOf(origin) !== -1) {
+//             callback(null, true);
+//         } else {
+//             callback(new Error("Not allowed by CORS"));
+//         }
+//     },
+//     credentials: true,
+// };
+// app.use(cors(corsOptions));
 
 app.use(express.json());
+app.use(cors());
 app.use(morgan("dev"));
-
 app.use(router);
 
 app.use(

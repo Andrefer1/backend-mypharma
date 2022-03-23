@@ -35,8 +35,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateUserService = void 0;
+var AppError_1 = __importDefault(require("../../../../../errors/AppError"));
 var CreateUserService = /** @class */ (function () {
     function CreateUserService(usersRepository) {
         this.usersRepository = usersRepository;
@@ -51,17 +55,20 @@ var CreateUserService = /** @class */ (function () {
                     case 1:
                         userFound = _b.sent();
                         if (userFound) {
-                            throw new Error("This email is already registered!");
-                            // return { status: 404, msg: "This email is already registered!" };
+                            throw new AppError_1.default("This email is already registered!", 409);
                         }
                         if (password !== confirmPassword) {
-                            throw new Error("Passwords must be the same!");
-                            // error = { status: 404, msg: "Passwords must be the same!" };
-                            // return { status: 404, msg: "Passwords must be the same!" };
+                            throw new AppError_1.default("Passwords must be the same!", 400);
                         }
                         cryptedPassword = this.usersRepository.cryptPassword(password);
-                        this.usersRepository.create({ name: name, email: email, password: cryptedPassword });
-                        return [2 /*return*/, userFound];
+                        return [4 /*yield*/, this.usersRepository.create({
+                                name: name,
+                                email: email,
+                                password: cryptedPassword,
+                            })];
+                    case 2:
+                        _b.sent();
+                        return [2 /*return*/];
                 }
             });
         });

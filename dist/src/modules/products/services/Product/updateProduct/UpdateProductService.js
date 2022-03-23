@@ -35,8 +35,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateProductService = void 0;
+var AppError_1 = __importDefault(require("../../../../../errors/AppError"));
 var UpdateProductService = /** @class */ (function () {
     function UpdateProductService(productsRepository) {
         this.productsRepository = productsRepository;
@@ -51,24 +55,25 @@ var UpdateProductService = /** @class */ (function () {
                     case 1:
                         productFound = _b.sent();
                         if (productFound) {
-                            if (id === productFound.id) {
-                                return [2 /*return*/];
+                            if (id !== productFound.id) {
+                                throw new AppError_1.default("Product already exists!", 409);
                             }
-                            throw new Error("Product already exists!");
                         }
-                        product = this.productsRepository.update({
-                            id: id,
-                            name: name,
-                            description: description,
-                            price: price,
-                            stock: stock,
-                            category: category,
-                            brand: brand,
-                        });
+                        return [4 /*yield*/, this.productsRepository.update({
+                                id: id,
+                                name: name,
+                                description: description,
+                                price: price,
+                                stock: stock,
+                                category: category,
+                                brand: brand,
+                            })];
+                    case 2:
+                        product = _b.sent();
                         if (!product) {
-                            throw new Error("This product does not exist!");
+                            throw new AppError_1.default("This product does not exist!", 404);
                         }
-                        return [2 /*return*/];
+                        return [2 /*return*/, product];
                 }
             });
         });

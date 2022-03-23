@@ -35,8 +35,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateBrandService = void 0;
+var AppError_1 = __importDefault(require("../../../../../errors/AppError"));
 var UpdateBrandService = /** @class */ (function () {
     function UpdateBrandService(brandsRepository) {
         this.brandsRepository = brandsRepository;
@@ -51,18 +55,17 @@ var UpdateBrandService = /** @class */ (function () {
                     case 1:
                         brandFound = _b.sent();
                         if (brandFound) {
-                            if (id === brandFound.id) {
-                                return [2 /*return*/];
+                            if (id !== brandFound.id) {
+                                throw new AppError_1.default("Brand already exists!");
                             }
-                            throw new Error("Brand already exists!");
                         }
                         return [4 /*yield*/, this.brandsRepository.update({ id: id, name: name })];
                     case 2:
                         brand = _b.sent();
                         if (!brand) {
-                            throw new Error("This brand does not exist!");
+                            throw new AppError_1.default("This brand does not exist!");
                         }
-                        return [2 /*return*/];
+                        return [2 /*return*/, brand];
                 }
             });
         });

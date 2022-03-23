@@ -22,7 +22,6 @@ var schema = new mongoose_1.default.Schema({
     password: {
         type: String,
         required: true,
-        // select: false,
     },
 });
 var User = mongoose_1.default.model("User", schema);

@@ -35,8 +35,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateCategoryService = void 0;
+var AppError_1 = __importDefault(require("../../../../../errors/AppError"));
 var CreateCategoryService = /** @class */ (function () {
     function CreateCategoryService(categoriesRepository) {
         this.categoriesRepository = categoriesRepository;
@@ -51,10 +55,10 @@ var CreateCategoryService = /** @class */ (function () {
                     case 1:
                         categoryAlreadyExists = _b.sent();
                         if (categoryAlreadyExists) {
-                            throw new Error("Category already exists!");
+                            throw new AppError_1.default("Category already exists!", 409);
                         }
-                        this.categoriesRepository.create({ name: name, description: description });
-                        return [2 /*return*/];
+                        return [4 /*yield*/, this.categoriesRepository.create({ name: name, description: description })];
+                    case 2: return [2 /*return*/, _b.sent()];
                 }
             });
         });

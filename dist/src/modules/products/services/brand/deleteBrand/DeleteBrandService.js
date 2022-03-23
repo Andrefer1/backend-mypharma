@@ -43,15 +43,11 @@ var DeleteBrandService = /** @class */ (function () {
     }
     DeleteBrandService.prototype.execute = function (id) {
         return __awaiter(this, void 0, void 0, function () {
-            var brand;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.brandsRepository.delete(id)];
                     case 1:
-                        brand = _a.sent();
-                        if (!brand) {
-                            throw new Error("Brand not found!");
-                        }
+                        _a.sent();
                         return [2 /*return*/];
                 }
             });

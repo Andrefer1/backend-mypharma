@@ -41,7 +41,6 @@ var uuid_1 = require("uuid");
 var Brand_1 = require("../../../../database/models/Brand");
 var BrandsRepository = /** @class */ (function () {
     function BrandsRepository() {
-        this.brands = [];
     }
     BrandsRepository.getInstance = function () {
         if (!BrandsRepository.INSTANCE) {
@@ -70,9 +69,7 @@ var BrandsRepository = /** @class */ (function () {
                             name: name,
                         });
                         return [4 /*yield*/, brand.save()];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/];
+                    case 1: return [2 /*return*/, _a.sent()];
                 }
             });
         });

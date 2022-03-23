@@ -35,8 +35,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateCategoryService = void 0;
+var AppError_1 = __importDefault(require("../../../../../errors/AppError"));
 var UpdateCategoryService = /** @class */ (function () {
     function UpdateCategoryService(categoriesRepository) {
         this.categoriesRepository = categoriesRepository;
@@ -52,18 +56,20 @@ var UpdateCategoryService = /** @class */ (function () {
                         categoryFound = _b.sent();
                         if (categoryFound) {
                             if (id !== categoryFound.id) {
-                                throw new Error("Category already exists!");
+                                throw new AppError_1.default("Category already exists!", 409);
                             }
                         }
-                        category = this.categoriesRepository.update({
-                            id: id,
-                            name: name,
-                            description: description,
-                        });
+                        return [4 /*yield*/, this.categoriesRepository.update({
+                                id: id,
+                                name: name,
+                                description: description,
+                            })];
+                    case 2:
+                        category = _b.sent();
                         if (!category) {
-                            throw new Error("This category does not exist!");
+                            throw new AppError_1.default("This category does not exist!", 404);
                         }
-                        return [2 /*return*/];
+                        return [2 /*return*/, category];
                 }
             });
         });

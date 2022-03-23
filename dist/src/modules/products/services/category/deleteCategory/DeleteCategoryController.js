@@ -7,8 +7,13 @@ var DeleteCategoryController = /** @class */ (function () {
     }
     DeleteCategoryController.prototype.handle = function (request, response) {
         var id = request.params.id;
-        this.deleteCategoryService.execute(id);
-        return response.status(204).send();
+        try {
+            this.deleteCategoryService.execute(id);
+            return response.status(204).send();
+        }
+        catch (error) {
+            return response.send(error);
+        }
     };
     return DeleteCategoryController;
 }());

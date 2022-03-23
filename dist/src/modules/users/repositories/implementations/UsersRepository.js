@@ -45,26 +45,6 @@ var uuid_1 = require("uuid");
 var User_1 = require("../../../../database/models/User");
 var UsersRepository = /** @class */ (function () {
     function UsersRepository() {
-        this.users = [
-        // {
-        //     id: "1",
-        //     name: "André",
-        //     email: "andre@gmail.com",
-        //     password: "123456",
-        // },
-        // {
-        //     id: "1",
-        //     name: "André Fernandes",
-        //     email: "andrefer@gmail.com",
-        //     password: "123456",
-        // },
-        // {
-        //     id: "1",
-        //     name: "André Fernandes Bispo",
-        //     email: "andrefer483@gmail.com",
-        //     password: "123456",
-        // },
-        ];
     }
     UsersRepository.getInstance = function () {
         if (!UsersRepository.INSTANCE) {

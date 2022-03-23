@@ -49,7 +49,13 @@ var ListProductsController = /** @class */ (function () {
                     case 0: return [4 /*yield*/, this.listProductsService.execute()];
                     case 1:
                         products = _a.sent();
-                        return [2 /*return*/, response.status(200).json(products)];
+                        try {
+                            return [2 /*return*/, response.status(200).json(products)];
+                        }
+                        catch (error) {
+                            return [2 /*return*/, response.send(error)];
+                        }
+                        return [2 /*return*/];
                 }
             });
         });

@@ -43,15 +43,26 @@ var CreateCategoryController = /** @class */ (function () {
     }
     CreateCategoryController.prototype.handle = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, name, description;
+            var _a, name, description, category, error_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _a = request.body, name = _a.name, description = _a.description;
-                        return [4 /*yield*/, this.createCategoryService.execute({ name: name, description: description })];
+                        _b.label = 1;
                     case 1:
-                        _b.sent();
-                        return [2 /*return*/, response.status(201).send()];
+                        _b.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, this.createCategoryService.execute({
+                                name: name,
+                                description: description,
+                            })];
+                    case 2:
+                        category = _b.sent();
+                        return [2 /*return*/, response.status(201).send(category)];
+                    case 3:
+                        error_1 = _b.sent();
+                        console.log(error_1);
+                        return [2 /*return*/, response.status(error_1.statusCode).send(error_1)];
+                    case 4: return [2 /*return*/];
                 }
             });
         });

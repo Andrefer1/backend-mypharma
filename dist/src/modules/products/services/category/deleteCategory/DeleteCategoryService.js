@@ -43,15 +43,11 @@ var DeleteCategoryService = /** @class */ (function () {
     }
     DeleteCategoryService.prototype.execute = function (id) {
         return __awaiter(this, void 0, void 0, function () {
-            var category;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.categoriesRepository.delete(id)];
                     case 1:
-                        category = _a.sent();
-                        if (!category) {
-                            throw new Error("Category not found!");
-                        }
+                        _a.sent();
                         return [2 /*return*/];
                 }
             });

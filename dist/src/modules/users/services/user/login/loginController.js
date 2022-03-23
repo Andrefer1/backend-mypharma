@@ -43,16 +43,22 @@ var LoginController = /** @class */ (function () {
     }
     LoginController.prototype.handle = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, email, password, user;
+            var _a, email, password, user, error_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _a = request.body, email = _a.email, password = _a.password;
-                        return [4 /*yield*/, this.loginService.execute({ email: email, password: password })];
+                        _b.label = 1;
                     case 1:
+                        _b.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, this.loginService.execute({ email: email, password: password })];
+                    case 2:
                         user = _b.sent();
-                        console.log(user);
-                        return [2 /*return*/, response.status(200).send({ user: user })];
+                        return [2 /*return*/, response.status(200).send(user)];
+                    case 3:
+                        error_1 = _b.sent();
+                        return [2 /*return*/, response.status(error_1.statusCode).send(error_1)];
+                    case 4: return [2 /*return*/];
                 }
             });
         });

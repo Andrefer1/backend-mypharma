@@ -41,7 +41,6 @@ var uuid_1 = require("uuid");
 var Product_1 = require("../../../../database/models/Product");
 var ProductsRepository = /** @class */ (function () {
     function ProductsRepository() {
-        this.products = [];
     }
     ProductsRepository.getInstance = function () {
         if (!ProductsRepository.INSTANCE) {
@@ -53,7 +52,7 @@ var ProductsRepository = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, Product_1.Product.find({}).populate(["category", "brand"])];
+                    case 0: return [4 /*yield*/, Product_1.Product.find({})];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -76,9 +75,7 @@ var ProductsRepository = /** @class */ (function () {
                             brand: brand,
                         });
                         return [4 /*yield*/, product.save()];
-                    case 1:
-                        _b.sent();
-                        return [2 /*return*/];
+                    case 1: return [2 /*return*/, _b.sent()];
                 }
             });
         });

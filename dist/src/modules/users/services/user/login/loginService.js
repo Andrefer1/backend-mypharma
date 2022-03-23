@@ -41,6 +41,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoginService = void 0;
 var bcrypt_1 = __importDefault(require("bcrypt"));
+var AppError_1 = __importDefault(require("../../../../../errors/AppError"));
 var LoginService = /** @class */ (function () {
     function LoginService(usersRepository) {
         this.usersRepository = usersRepository;
@@ -55,11 +56,13 @@ var LoginService = /** @class */ (function () {
                     case 1:
                         user = _b.sent();
                         if (!user) {
-                            throw new Error("User not found!");
+                            throw new AppError_1.default("User not found!", 404);
                         }
-                        comparePassword = bcrypt_1.default.compare(password, user.password);
+                        return [4 /*yield*/, bcrypt_1.default.compare(password, user.password)];
+                    case 2:
+                        comparePassword = _b.sent();
                         if (!comparePassword) {
-                            throw new Error("Password invalid!");
+                            throw new AppError_1.default("Password invalid!", 401);
                         }
                         return [2 /*return*/, user];
                 }

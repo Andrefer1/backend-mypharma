@@ -43,13 +43,10 @@ var ListBrandsService = /** @class */ (function () {
     }
     ListBrandsService.prototype.execute = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var brands;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.brandsRepository.list()];
-                    case 1:
-                        brands = _a.sent();
-                        return [2 /*return*/, brands];
+                    case 1: return [2 /*return*/, _a.sent()];
                 }
             });
         });

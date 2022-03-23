@@ -46,8 +46,14 @@ var DeleteProductController = /** @class */ (function () {
             var id;
             return __generator(this, function (_a) {
                 id = request.params.id;
-                this.deleteProductService.execute(id);
-                return [2 /*return*/, response.status(204).send()];
+                try {
+                    this.deleteProductService.execute(id);
+                    return [2 /*return*/, response.status(204).send()];
+                }
+                catch (error) {
+                    return [2 /*return*/, response.send(error)];
+                }
+                return [2 /*return*/];
             });
         });
     };

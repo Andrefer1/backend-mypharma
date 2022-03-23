@@ -41,7 +41,6 @@ var uuid_1 = require("uuid");
 var Category_1 = require("../../../../database/models/Category");
 var CategoriesRepository = /** @class */ (function () {
     function CategoriesRepository() {
-        this.categories = [];
     }
     CategoriesRepository.getInstance = function () {
         if (!CategoriesRepository.INSTANCE) {
@@ -72,9 +71,7 @@ var CategoriesRepository = /** @class */ (function () {
                             description: description,
                         });
                         return [4 /*yield*/, category.save()];
-                    case 1:
-                        _b.sent();
-                        return [2 /*return*/];
+                    case 1: return [2 /*return*/, _b.sent()];
                 }
             });
         });

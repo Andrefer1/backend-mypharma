@@ -43,13 +43,19 @@ var ListBrandsController = /** @class */ (function () {
     }
     ListBrandsController.prototype.handle = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var brands;
+            var brands, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.listBrandService.execute()];
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.listBrandService.execute()];
                     case 1:
                         brands = _a.sent();
                         return [2 /*return*/, response.status(200).json(brands)];
+                    case 2:
+                        error_1 = _a.sent();
+                        return [2 /*return*/, response.send(error_1)];
+                    case 3: return [2 /*return*/];
                 }
             });
         });

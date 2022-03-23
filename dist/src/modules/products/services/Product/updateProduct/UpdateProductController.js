@@ -43,12 +43,15 @@ var UpdateProductController = /** @class */ (function () {
     }
     UpdateProductController.prototype.handle = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, _a, name, description, price, stock, category, brand;
+            var id, _a, name, description, price, stock, category, brand, product, error_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         id = request.params.id;
                         _a = request.body, name = _a.name, description = _a.description, price = _a.price, stock = _a.stock, category = _a.category, brand = _a.brand;
+                        _b.label = 1;
+                    case 1:
+                        _b.trys.push([1, 3, , 4]);
                         return [4 /*yield*/, this.updateProductService.execute({
                                 id: id,
                                 name: name,
@@ -58,9 +61,13 @@ var UpdateProductController = /** @class */ (function () {
                                 category: category,
                                 brand: brand,
                             })];
-                    case 1:
-                        _b.sent();
-                        return [2 /*return*/, response.status(204).send()];
+                    case 2:
+                        product = _b.sent();
+                        return [2 /*return*/, response.status(204).send(product)];
+                    case 3:
+                        error_1 = _b.sent();
+                        return [2 /*return*/, response.status(error_1.statusCode).send(error_1)];
+                    case 4: return [2 /*return*/];
                 }
             });
         });

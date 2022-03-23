@@ -20,33 +20,21 @@ var schema = new mongoose_1.default.Schema({
         required: true,
     },
     price: {
-        type: String,
+        type: Number,
         required: true,
     },
     stock: {
-        type: String,
+        type: Number,
         required: true,
     },
     category: {
-        type: mongoose_1.default.Schema.Types.Mixed,
-        ref: "Category",
-        require: true,
+        type: String,
+        required: true,
     },
     brand: {
-        type: mongoose_1.default.Schema.Types.Mixed,
-        ref: "Brand",
-        require: true,
+        type: String,
+        required: true,
     },
-    // category: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "Category",
-    //     require: true,
-    // },
-    // brand: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "Brand",
-    //     require: true,
-    // },
 });
 var Product = mongoose_1.default.model("Product", schema);
 exports.Product = Product;

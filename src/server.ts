@@ -22,7 +22,12 @@ mongoose.createConnection();
 
 // const whiteList = domainsFromEnv.split(",").map((item) => item.trim());
 
-const whiteList = ["http://localhost:3000"];
+const whiteList = [
+    "http://localhost:3000",
+    "http://localhost:3000/auth/login",
+    "https://front-end-mypharma.herokuapp.com",
+    "https://front-end-mypharma.herokuapp.com/auth/login",
+];
 
 const corsOptions = {
     origin: function (origin, callback) {
@@ -34,7 +39,6 @@ const corsOptions = {
     },
     credentials: true,
 };
-
 app.use(cors(corsOptions));
 
 // app.use(cors());

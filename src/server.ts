@@ -1,4 +1,4 @@
-import "dotenv/config";
+// import "dotenv/config";
 
 import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
@@ -18,11 +18,16 @@ const app = express();
 
 mongoose.createConnection();
 
-const domainsFromEnv = process.env.CORS_DOMAINS || "";
+// const domainsFromEnv = process.env.CORS_DOMAINS || "";
 
-const whitelist = domainsFromEnv.split(",").map((item) => item.trim());
+// const whitelist = domainsFromEnv.split(",").map((item) => item.trim());
 
-// const whitelist = ["http://localhost:3000"];
+const whitelist = [
+    "http://localhost:3000",
+    "http://localhost:3000/auth/login",
+    "https://front-end-mypharma.herokuapp.com",
+    "https://front-end-mypharma.herokuapp.com/auth/login",
+];
 const corsOptions = {
     origin: function (origin, callback) {
         if (!origin || whitelist.indexOf(origin) !== -1) {
@@ -34,6 +39,8 @@ const corsOptions = {
     credentials: true,
 };
 app.use(cors(corsOptions));
+
+app.use(cors());
 
 app.use(express.json());
 app.use(morgan("dev"));
@@ -58,4 +65,4 @@ app.use(
     }
 );
 
-app.listen(process.env.PORT || 3000, () => console.log("Server is running!"));
+app.listen(process.env.PORT || 3333, () => console.log("Server is running!"));

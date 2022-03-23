@@ -1,5 +1,4 @@
 "use strict";
-// import "dotenv/config";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -7,36 +6,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var cors_1 = __importDefault(require("cors"));
 var morgan_1 = __importDefault(require("morgan"));
-// import {
-//     createProxyMiddleware,
-//     Filter,
-//     Options,
-//     RequestHandler,
-// } from "http-proxy-middleware";
 var database_1 = __importDefault(require("./database"));
 var routes_1 = require("./routes");
 var AppError_1 = __importDefault(require("./errors/AppError"));
 var app = (0, express_1.default)();
 database_1.default.createConnection();
-// const domainsFromEnv = process.env.CORS_DOMAINS || "";
-// const whiteList = domainsFromEnv.split(",").map((item) => item.trim());
-// const whiteList = [
-//     "http://localhost:3000",
-//     "http://localhost:3000/auth/login",
-//     "https://front-end-mypharma.herokuapp.com",
-//     "https://front-end-mypharma.herokuapp.com/auth/login",
-// ];
-// const corsOptions = {
-//     origin: function (origin, callback) {
-//         if (!origin || whiteList.indexOf(origin) !== -1) {
-//             callback(null, true);
-//         } else {
-//             callback(new Error("Not allowed by CORS"));
-//         }
-//     },
-//     credentials: true,
-// };
-// app.use(cors(corsOptions));
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
 app.use((0, morgan_1.default)("dev"));

@@ -1,14 +1,6 @@
-// import "dotenv/config";
-
 import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
 import morgan from "morgan";
-// import {
-//     createProxyMiddleware,
-//     Filter,
-//     Options,
-//     RequestHandler,
-// } from "http-proxy-middleware";
 
 import mongoose from "./database";
 import { router } from "./routes";
@@ -17,29 +9,6 @@ import AppError from "./errors/AppError";
 const app = express();
 
 mongoose.createConnection();
-
-// const domainsFromEnv = process.env.CORS_DOMAINS || "";
-
-// const whiteList = domainsFromEnv.split(",").map((item) => item.trim());
-
-// const whiteList = [
-//     "http://localhost:3000",
-//     "http://localhost:3000/auth/login",
-//     "https://front-end-mypharma.herokuapp.com",
-//     "https://front-end-mypharma.herokuapp.com/auth/login",
-// ];
-
-// const corsOptions = {
-//     origin: function (origin, callback) {
-//         if (!origin || whiteList.indexOf(origin) !== -1) {
-//             callback(null, true);
-//         } else {
-//             callback(new Error("Not allowed by CORS"));
-//         }
-//     },
-//     credentials: true,
-// };
-// app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(cors());

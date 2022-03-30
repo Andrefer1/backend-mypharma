@@ -17,9 +17,9 @@ class CreateUserController {
 
             return response
                 .status(201)
-                .send({ msg: "Usuário criado com sucesso!" });
+                .send({ message: "Usuário criado com sucesso!" });
         } catch (error) {
-            return response.send(error);
+            return response.status(error.statusCode).send(error);
         }
     }
 }

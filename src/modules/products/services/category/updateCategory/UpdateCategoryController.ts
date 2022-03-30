@@ -9,15 +9,13 @@ class UpdateCategoryController {
         const { name, description } = request.body;
 
         try {
-            const category = await this.updateCategoryService.execute({
+            await this.updateCategoryService.execute({
                 id,
                 name,
                 description,
             });
 
-            console.log(category);
-
-            return response.status(204).send(category);
+            return response.status(204).send();
         } catch (error) {
             return response.status(error.statusCode).send(error);
         }

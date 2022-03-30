@@ -5,7 +5,7 @@ import { ICategoriesRepository } from "../../../repositories/ICategoriesReposito
 class UpdateCategoryService {
     constructor(private categoriesRepository: ICategoriesRepository) {}
 
-    async execute({ id, name, description }: Category): Promise<Category> {
+    async execute({ id, name, description }: Category): Promise<void> {
         const categoryFound = await this.categoriesRepository.findByName(name);
 
         if (categoryFound) {
@@ -23,8 +23,6 @@ class UpdateCategoryService {
         if (!category) {
             throw new AppError("This category does not exist!", 404);
         }
-
-        return category;
     }
 }
 

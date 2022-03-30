@@ -34,3 +34,5 @@ app.use(
 );
 
 app.listen(process.env.PORT || 3333, () => console.log("Server is running!"));
+
+export { app };

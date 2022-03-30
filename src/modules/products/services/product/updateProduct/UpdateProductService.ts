@@ -13,7 +13,7 @@ class UpdateProductService {
         stock,
         category,
         brand,
-    }: Product): Promise<Product> {
+    }: Product): Promise<void> {
         const productFound = await this.productsRepository.findByName(name);
 
         if (productFound) {
@@ -35,8 +35,6 @@ class UpdateProductService {
         if (!product) {
             throw new AppError("This product does not exist!", 404);
         }
-
-        return product;
     }
 }
 

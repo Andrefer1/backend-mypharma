@@ -10,7 +10,7 @@ class UpdateProductController {
             request.body;
 
         try {
-            const product = await this.updateProductService.execute({
+            await this.updateProductService.execute({
                 id,
                 name,
                 description,
@@ -20,7 +20,7 @@ class UpdateProductController {
                 brand,
             });
 
-            return response.status(204).send(product);
+            return response.status(204).send();
         } catch (error) {
             return response.status(error.statusCode).send(error);
         }

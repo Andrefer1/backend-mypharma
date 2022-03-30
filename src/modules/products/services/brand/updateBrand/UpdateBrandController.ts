@@ -9,9 +9,9 @@ class UpdateBrandController {
         const { name } = request.body;
 
         try {
-            const brand = await this.updateBrandService.execute({ id, name });
+            await this.updateBrandService.execute({ id, name });
 
-            return response.status(204).send(brand);
+            return response.status(204).send();
         } catch (error) {
             return response.status(error.statusCode).send(error);
         }
